@@ -1,0 +1,101 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.myapp.kmmsample.android"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+8-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="31" />
+9-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml
+10
+11    <application
+11-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:5:5-18:19
+12        android:name="com.myapp.kmmsample.android.MyApplication"
+12-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:6:9-65
+13        android:allowBackup="false"
+13-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:7:9-36
+14        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+14-->[androidx.core:core:1.7.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/4cfeea4b0b1cc6b2209bfb9841c0e45e/transformed/core-1.7.0/AndroidManifest.xml:24:18-86
+15        android:debuggable="true"
+16        android:extractNativeLibs="false"
+17        android:supportsRtl="true"
+17-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:8:9-35
+18        android:testOnly="true"
+19        android:theme="@style/AppTheme" >
+19-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:9:9-40
+20        <activity
+20-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:10:9-17:20
+21            android:name="com.myapp.ui.MainActivity"
+21-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:11:13-53
+22            android:exported="true" >
+22-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:12:13-36
+23            <intent-filter>
+23-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:13:13-16:29
+24                <action android:name="android.intent.action.MAIN" />
+24-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:14:17-69
+24-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:14:25-66
+25
+26                <category android:name="android.intent.category.LAUNCHER" />
+26-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:15:17-77
+26-->/Users/hayashitoshiki/AndroidStudioProjects/KmmSample/android/androidApp/src/main/AndroidManifest.xml:15:27-74
+27            </intent-filter>
+28        </activity>
+29        <activity
+29-->[androidx.compose.ui:ui-tooling:1.1.1] /Users/hayashitoshiki/.gradle/caches/transforms-3/92fc786bf2e270fa8cf1cf52762e67bb/transformed/ui-tooling-1.1.1/AndroidManifest.xml:25:9-27:39
+30            android:name="androidx.compose.ui.tooling.PreviewActivity"
+30-->[androidx.compose.ui:ui-tooling:1.1.1] /Users/hayashitoshiki/.gradle/caches/transforms-3/92fc786bf2e270fa8cf1cf52762e67bb/transformed/ui-tooling-1.1.1/AndroidManifest.xml:26:13-71
+31            android:exported="true" />
+31-->[androidx.compose.ui:ui-tooling:1.1.1] /Users/hayashitoshiki/.gradle/caches/transforms-3/92fc786bf2e270fa8cf1cf52762e67bb/transformed/ui-tooling-1.1.1/AndroidManifest.xml:27:13-36
+32
+33        <provider
+33-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:26:9-34:20
+34            android:name="androidx.startup.InitializationProvider"
+34-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:27:13-67
+35            android:authorities="com.myapp.kmmsample.android.androidx-startup"
+35-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:28:13-68
+36            android:exported="false" >
+36-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:29:13-37
+37            <meta-data
+37-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:31:13-33:52
+38                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+38-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:32:17-75
+39                android:value="androidx.startup" />
+39-->[androidx.emoji2:emoji2:1.0.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/41e726ee13282d3cdf931fc20df3e03a/transformed/emoji2-1.0.0/AndroidManifest.xml:33:17-49
+40            <meta-data
+40-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:31:13-33:52
+41                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+41-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:32:17-85
+42                android:value="androidx.startup" />
+42-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:33:17-49
+43            <meta-data
+43-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/26d09f8edb2a5e020d45f04d32062b52/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:31:13-33:52
+44                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+44-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/26d09f8edb2a5e020d45f04d32062b52/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:32:17-78
+45                android:value="androidx.startup" />
+45-->[androidx.lifecycle:lifecycle-process:2.4.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/26d09f8edb2a5e020d45f04d32062b52/transformed/lifecycle-process-2.4.0/AndroidManifest.xml:33:17-49
+46        </provider>
+47
+48        <receiver
+48-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:36:9-45:20
+49            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+49-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:37:13-76
+50            android:directBootAware="false"
+50-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:38:13-44
+51            android:enabled="true"
+51-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:39:13-35
+52            android:exported="true"
+52-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:40:13-36
+53            android:permission="android.permission.DUMP" >
+53-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:41:13-57
+54            <intent-filter>
+54-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:42:13-44:29
+55                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+55-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:43:17-91
+55-->[androidx.profileinstaller:profileinstaller:1.1.0] /Users/hayashitoshiki/.gradle/caches/transforms-3/5d4681a34c5e2bebda8ef1d4cb501731/transformed/profileinstaller-1.1.0/AndroidManifest.xml:43:25-88
+56            </intent-filter>
+57        </receiver>
+58    </application>
+59
+60</manifest>
