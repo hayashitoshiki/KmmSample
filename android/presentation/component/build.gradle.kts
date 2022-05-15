@@ -4,7 +4,6 @@ plugins {
 }
 
 val compose_version = "1.1.1"
-val compiler_version = "1.0.0-beta08"
 
 android {
     compileSdk = 31
@@ -35,7 +34,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion =  compose_version
-        kotlinCompilerVersion = compiler_version
     }
     kotlinOptions {
         jvmTarget = "1.8"
@@ -45,7 +43,7 @@ android {
 dependencies {
     implementation(project(":shared:common"))
 
-    implementation ("androidx.compose.compiler:compiler:$compiler_version")
+//    implementation ("androidx.compose.compiler:compiler:$compiler_version")
     implementation("androidx.core:core-ktx:1.7.0")
     implementation("androidx.appcompat:appcompat:1.4.1")
     implementation("com.google.android.material:material:1.5.0")

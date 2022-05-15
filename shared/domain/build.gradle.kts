@@ -14,6 +14,8 @@ kotlin {
     ).forEach {
         it.binaries.framework {
             baseName = "domain"
+            export(project(":shared:test"))
+            transitiveExport = true
         }
     }
 
@@ -21,7 +23,15 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(project(":shared:test"))
-
+            }
+        }
+        val commonTest by getting {
+            dependencies {
+                implementation(kotlin("test"))
+            }
+        }
+        val androidMain by getting {
+            dependencies {
                 // Hilt
                 implementation("com.google.dagger:hilt-android:2.37")
                 // configure kapt to utilize
@@ -32,15 +42,8 @@ kotlin {
                         "2.37"
                     )
                 )
-
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test"))
-            }
-        }
-        val androidMain by getting
         val androidTest by getting
         val iosX64Main by getting
         val iosArm64Main by getting

@@ -10,7 +10,15 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
-		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
+		36BD1E9E2830066E002AD1A3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1E9D2830066E002AD1A3 /* HomeViewModel.swift */; };
+		36BD1EA12830068D002AD1A3 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EA02830068D002AD1A3 /* HomeScreen.swift */; };
+		36BD1EA328300749002AD1A3 /* LocalCoinRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EA228300749002AD1A3 /* LocalCoinRepositoryImpl.swift */; };
+		36BD1EA528300B53002AD1A3 /* ViewModelComponentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EA428300B53002AD1A3 /* ViewModelComponentModule.swift */; };
+		36BD1EA728300B76002AD1A3 /* UseCaseComponentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EA628300B76002AD1A3 /* UseCaseComponentModule.swift */; };
+		36BD1EA92830996E002AD1A3 /* Injeted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EA82830996E002AD1A3 /* Injeted.swift */; };
+		36BD1EAB28309A68002AD1A3 /* FactoryContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EAA28309A68002AD1A3 /* FactoryContainer.swift */; };
+		36BD1EAD28309AB8002AD1A3 /* FactoryKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EAC28309AB8002AD1A3 /* FactoryKey.swift */; };
+		36BD1EB02830A329002AD1A3 /* RepositoryComponentModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BD1EAF2830A329002AD1A3 /* RepositoryComponentModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,8 +38,16 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		36BD1E9D2830066E002AD1A3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		36BD1EA02830068D002AD1A3 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		36BD1EA228300749002AD1A3 /* LocalCoinRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCoinRepositoryImpl.swift; sourceTree = "<group>"; };
+		36BD1EA428300B53002AD1A3 /* ViewModelComponentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelComponentModule.swift; sourceTree = "<group>"; };
+		36BD1EA628300B76002AD1A3 /* UseCaseComponentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseComponentModule.swift; sourceTree = "<group>"; };
+		36BD1EA82830996E002AD1A3 /* Injeted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injeted.swift; sourceTree = "<group>"; };
+		36BD1EAA28309A68002AD1A3 /* FactoryContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryContainer.swift; sourceTree = "<group>"; };
+		36BD1EAC28309AB8002AD1A3 /* FactoryKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactoryKey.swift; sourceTree = "<group>"; };
+		36BD1EAF2830A329002AD1A3 /* RepositoryComponentModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryComponentModule.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		7555FF82242A565900829871 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,6 +70,68 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		36BD1E96283003B8002AD1A3 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1E98283003D6002AD1A3 /* Repository */,
+			);
+			name = Data;
+			sourceTree = "<group>";
+		};
+		36BD1E97283003C2002AD1A3 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1E9A28300630002AD1A3 /* Screen */,
+				36BD1E9B28300637002AD1A3 /* ViewModel */,
+			);
+			name = Presentation;
+			sourceTree = "<group>";
+		};
+		36BD1E98283003D6002AD1A3 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1EA228300749002AD1A3 /* LocalCoinRepositoryImpl.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		36BD1E99283003E3002AD1A3 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1EAE2830A1D4002AD1A3 /* Base */,
+				36BD1EA428300B53002AD1A3 /* ViewModelComponentModule.swift */,
+				36BD1EA628300B76002AD1A3 /* UseCaseComponentModule.swift */,
+				36BD1EAF2830A329002AD1A3 /* RepositoryComponentModule.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		36BD1E9A28300630002AD1A3 /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1EA02830068D002AD1A3 /* HomeScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		36BD1E9B28300637002AD1A3 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1E9D2830066E002AD1A3 /* HomeViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		36BD1EAE2830A1D4002AD1A3 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				36BD1EAC28309AB8002AD1A3 /* FactoryKey.swift */,
+				36BD1EA82830996E002AD1A3 /* Injeted.swift */,
+				36BD1EAA28309A68002AD1A3 /* FactoryContainer.swift */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
@@ -74,8 +152,10 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				36BD1E99283003E3002AD1A3 /* DI */,
+				36BD1E97283003C2002AD1A3 /* Presentation */,
+				36BD1E96283003B8002AD1A3 /* Data */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
@@ -174,7 +254,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd \"$SRCROOT/..\"\nexport JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home'\n./gradlew :domain:embedAndSignAppleFrameworkForXcode\n";
+			shellScript = "cd \"$SRCROOT/..\"\nexport JAVA_HOME='/Applications/Android Studio.app/Contents/jre/Contents/Home'\n./gradlew :shared:domain:embedAndSignAppleFrameworkForXcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -183,8 +263,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36BD1EA12830068D002AD1A3 /* HomeScreen.swift in Sources */,
+				36BD1EA328300749002AD1A3 /* LocalCoinRepositoryImpl.swift in Sources */,
+				36BD1EA728300B76002AD1A3 /* UseCaseComponentModule.swift in Sources */,
+				36BD1EA92830996E002AD1A3 /* Injeted.swift in Sources */,
+				36BD1EB02830A329002AD1A3 /* RepositoryComponentModule.swift in Sources */,
+				36BD1EAD28309AB8002AD1A3 /* FactoryKey.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
-				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				36BD1E9E2830066E002AD1A3 /* HomeViewModel.swift in Sources */,
+				36BD1EA528300B53002AD1A3 /* ViewModelComponentModule.swift in Sources */,
+				36BD1EAB28309A68002AD1A3 /* FactoryContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,7 +402,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,7 +427,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../shared/domain/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)";
 				INFOPLIST_FILE = iosApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -21,8 +21,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.*
-import com.myapp.common.SealedClassEnumExtension
-import com.myapp.common.SealedClassEnumWithName
+//import com.myapp.common.SealedClassEnumExtension
+//import com.myapp.common.SealedClassEnumWithName
 import com.myapp.component.theme.TextColor
 import kotlinx.coroutines.launch
 
@@ -45,12 +45,12 @@ abstract class TabItem(val icon: ImageVector, val title: String, val screen: @Co
  * 設定画面_各ウォレットタブ
  */
 sealed class SettingWalletTabItem(icon: ImageVector, title: String, screen: @Composable () -> Unit)
-    : TabItem(icon, title, screen), SealedClassEnumWithName {
+    : TabItem(icon, title, screen) {
     class SettingSpending(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Home, "spending", { screen() })
     class SettingWallet(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.ShoppingCart, "wallet", { screen() })
     class SettingRate(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Settings, "rate", { screen() })
 
-    companion object : SealedClassEnumExtension<SettingWalletTabItem>
+//    companion object : SealedClassEnumExtension<SettingWalletTabItem>
 }
 
 

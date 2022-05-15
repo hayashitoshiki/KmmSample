@@ -5,7 +5,6 @@ plugins {
     id 'dagger.hilt.android.plugin'
 }
 def compose_version = "1.1.1"
-def kotlin_version = "1.6.10"
 def hilt_version = "2.37"
 android {
     compileSdkVersion 31
@@ -61,7 +60,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion compose_version
-        kotlinCompilerVersion kotlin_version
     }
 }
 

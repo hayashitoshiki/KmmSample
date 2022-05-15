@@ -35,7 +35,7 @@ android {
 
 dependencies {
 
-    api(project(":shared:common"))
+//    api(project(":shared:common"))
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.37")
