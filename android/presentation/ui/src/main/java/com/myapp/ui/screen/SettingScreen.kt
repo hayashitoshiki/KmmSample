@@ -8,12 +8,10 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.input.KeyboardType
@@ -23,8 +21,8 @@ import com.myapp.component.theme.Gray700
 import com.myapp.component.theme.Green500
 import com.myapp.model.value.RealAssetsType
 import com.myapp.model.value.StepnCoinType
-import com.myapp.presentation.viewmodel.SettingContract
-import com.myapp.presentation.viewmodel.SettingViewModel
+import com.myapp.ui.viewmodel.SettingContract
+import com.myapp.ui.viewmodel.SettingViewModel
 
 /**
  * 設定画面

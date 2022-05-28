@@ -1,10 +1,11 @@
-package com.myapp.presentation.viewmodel
+package com.myapp.ui.viewmodel
 
 import com.myapp.composesample.util.base.BaseContract
 import com.myapp.composesample.util.base.BaseViewModel
 import com.myapp.kmmsample.usecase.CoinUseCase
 import com.myapp.model.value.*
 import com.myapp.presentation.extension.changeStrValue
+import com.myapp.ui.util.NumberUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -20,7 +21,7 @@ class SettingViewModel @Inject constructor(
     init {
         val wallet = coinUseCase.getWalletCoin()
         val spending = coinUseCase.getSpendingCoin()
-        val rate = coinUseCase.getRateCoin()
+        val rate = coinUseCase.getRateCoin(LegalTender.JPY)
 
         setState {
             copy(
@@ -96,66 +97,37 @@ class SettingViewModel @Inject constructor(
         is SettingContract.Event.OnChangeWalletGem -> onChangeWalletGem(event.count)
         is SettingContract.Event.OnChangeWalletShoebox -> onChangeWalletShoebox(event.count)
         is SettingContract.Event.OnChangeWalletSneaker -> onChangeWalletSneaker(event.count)
+        else -> {}
     }
-
-    private fun changeCoinValue(value: String) : Float {
-        return if (value.endsWith(".")) {
-            (value + "0").toFloat()
-        } else {
-            value.toFloat()
-        }
-    }
-    private fun checkCoinValueUpdate(value: String) : Boolean {
-        val regexNumber = "[0-9.]{1,8}".toRegex()
-
-        if (value.isEmpty()) return true
-        if (value.startsWith(".")) return false
-        if (!regexNumber.matches(value)) return false
-        value.chunked(1)
-            .filter { it == "." }
-            .size
-            .also{ if(it >= 2) return false }
-        return true
-    }
-
-    private fun checkCountValueUpdate(value: String) : Boolean {
-        val regexNumber = "[0-9]{1,8}".toRegex()
-
-        if (value.isEmpty()) return true
-        if (value.startsWith(".")) return false
-        if (!regexNumber.matches(value)) return false
-        return true
-    }
-
 
     private fun onUpdateSpendingCoin(type: AssetsType) {
         val assets = when(type) {
             StepnCoinType.GMT -> {
                 setState { copy(beforeSpendingGmt = state.value.spendingGmt, enabledSpendingGmt = false) }
-                GmtCoin(changeCoinValue(state.value.spendingGmt))
+                GmtCoin(NumberUtil.changeCoinValue(state.value.spendingGmt))
             }
             StepnCoinType.GST -> {
                 setState { copy(beforeSpendingGst = state.value.spendingGst, enabledSpendingGst = false) }
-               GstCoin(changeCoinValue(state.value.spendingGst))
+                GstCoin(NumberUtil.changeCoinValue(state.value.spendingGst))
             }
             StepnCoinType.SOL -> {
                 setState { copy(beforeSpendingSol = state.value.spendingSol, enabledSpendingSol = false) }
-                SolanaCoin(changeCoinValue(state.value.spendingSol))
+                SolanaCoin(NumberUtil.changeCoinValue(state.value.spendingSol))
             }
             StepnCoinType.USCD -> {
                throw IllegalAccessError("SpendingはUSDCには存在しません。")
             }
             RealAssetsType.GEM -> {
                 setState { copy(beforeSpendingGem = state.value.spendingGem, enabledSpendingGem = false) }
-                GemAssets(changeCoinValue(state.value.spendingGem))
+                GemAssets(NumberUtil.changeCoinValue(state.value.spendingGem))
             }
             RealAssetsType.SHOEBOX -> {
                 setState { copy(beforeSpendingShoebox = state.value.spendingShoebox, enabledSpendingShoebox = false) }
-                ShoeboxAssets(changeCoinValue(state.value.spendingShoebox))
+                ShoeboxAssets(NumberUtil.changeCoinValue(state.value.spendingShoebox))
             }
             RealAssetsType.SNEAKER -> {
                 setState { copy(beforeSpendingSneaker = state.value.spendingSneaker, enabledSpendingSneaker = false) }
-                SneakerAssets(changeCoinValue(state.value.spendingSneaker))
+                SneakerAssets(NumberUtil.changeCoinValue(state.value.spendingSneaker))
             }
         }
         coinUseCase.updateSpendingAssets(assets)
@@ -164,31 +136,31 @@ class SettingViewModel @Inject constructor(
         val assets = when(type) {
             StepnCoinType.GMT -> {
                 setState { copy(beforeRateGmt = state.value.rateGmt, enabledRateGmt = false) }
-                GmtCoin(changeCoinValue(state.value.rateGmt))
+                GmtCoin(NumberUtil.changeCoinValue(state.value.rateGmt))
             }
             StepnCoinType.GST -> {
                 setState { copy(beforeRateGst = state.value.rateGst, enabledRateGst = false) }
-                GstCoin(changeCoinValue(state.value.rateGst))
+                GstCoin(NumberUtil.changeCoinValue(state.value.rateGst))
             }
             StepnCoinType.SOL -> {
                 setState { copy(beforeRateSol = state.value.rateSol, enabledRateSol = false) }
-                SolanaCoin(changeCoinValue(state.value.rateSol))
+                SolanaCoin(NumberUtil.changeCoinValue(state.value.rateSol))
             }
             StepnCoinType.USCD -> {
                 setState { copy(beforeRateUsdc = state.value.rateUsdc, enabledRateUsdc = false) }
-                UsdcCoin(changeCoinValue(state.value.rateUsdc))
+                UsdcCoin(NumberUtil.changeCoinValue(state.value.rateUsdc))
             }
             RealAssetsType.GEM -> {
                 setState { copy(beforeRateGem = state.value.rateGem, enabledRateGem = false) }
-                GemAssets(changeCoinValue(state.value.rateGem))
+                GemAssets(NumberUtil.changeCoinValue(state.value.rateGem))
             }
             RealAssetsType.SHOEBOX -> {
                 setState { copy(beforeRateShoebox = state.value.rateShoebox, enabledRateShoebox = false) }
-                ShoeboxAssets(changeCoinValue(state.value.rateShoebox))
+                ShoeboxAssets(NumberUtil.changeCoinValue(state.value.rateShoebox))
             }
             RealAssetsType.SNEAKER -> {
                 setState { copy(beforeRateSneaker = state.value.rateSneaker, enabledRateSneaker = false) }
-                SneakerAssets(changeCoinValue(state.value.rateSneaker))
+                SneakerAssets(NumberUtil.changeCoinValue(state.value.rateSneaker))
             }
         }
         coinUseCase.updateRateAssets(assets)
@@ -197,133 +169,133 @@ class SettingViewModel @Inject constructor(
         val assets = when(type) {
             StepnCoinType.GMT -> {
                 setState { copy(beforeWalletGmt = state.value.walletGmt, enabledWalletGmt = false) }
-                GmtCoin(changeCoinValue(state.value.walletGmt))
+                GmtCoin(NumberUtil.changeCoinValue(state.value.walletGmt))
             }
             StepnCoinType.GST -> {
                 setState { copy(beforeWalletGst = state.value.walletGst, enabledWalletGst = false) }
-                GstCoin(changeCoinValue(state.value.walletGst))
+                GstCoin(NumberUtil.changeCoinValue(state.value.walletGst))
             }
             StepnCoinType.SOL -> {
                 setState { copy(beforeWalletSol = state.value.walletSol, enabledWalletSol = false) }
-                SolanaCoin(changeCoinValue(state.value.walletSol))
+                SolanaCoin(NumberUtil.changeCoinValue(state.value.walletSol))
             }
             StepnCoinType.USCD -> {
                 setState { copy(beforeWalletUsdc = state.value.walletUsdc, enabledWalletUsdc = false) }
-                UsdcCoin(changeCoinValue(state.value.walletUsdc))
+                UsdcCoin(NumberUtil.changeCoinValue(state.value.walletUsdc))
             }
             RealAssetsType.GEM -> {
                 setState { copy(beforeWalletGem = state.value.walletGem, enabledWalletGem = false) }
-                GemAssets(changeCoinValue(state.value.walletGem))
+                GemAssets(NumberUtil.changeCoinValue(state.value.walletGem))
             }
             RealAssetsType.SHOEBOX -> {
                 setState { copy(beforeWalletShoebox = state.value.walletShoebox, enabledWalletShoebox = false) }
-                ShoeboxAssets(changeCoinValue(state.value.walletShoebox))
+                ShoeboxAssets(NumberUtil.changeCoinValue(state.value.walletShoebox))
             }
             RealAssetsType.SNEAKER -> {
                 setState { copy(beforeWalletSneaker = state.value.walletSneaker, enabledWalletSneaker = false) }
-                SneakerAssets(changeCoinValue(state.value.walletSneaker))
+                SneakerAssets(NumberUtil.changeCoinValue(state.value.walletSneaker))
             }
         }
         coinUseCase.updateWalletAssets(assets)
     }
     private fun onChangeSpendingGst(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeSpendingGst != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingGst, coin)
         setState { copy(spendingGst = coin, enabledSpendingGst = enabled) }
     }
     private fun onChangeSpendingSol(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeSpendingSol != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingSol, coin)
         setState { copy(spendingSol = coin, enabledSpendingSol = enabled) }
     }
     private fun onChangeSpendingGmt(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeSpendingGmt != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingGmt, coin)
         setState { copy(spendingGmt = coin, enabledSpendingGmt = enabled) }
     }
     private fun onChangeSpendingGem(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeSpendingGem != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingGem, assets)
         setState { copy(spendingGem = assets, enabledSpendingGem = enabled) }
     }
     private fun onChangeSpendingShoebox(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeSpendingShoebox != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingShoebox, assets)
         setState { copy(spendingShoebox = assets, enabledSpendingShoebox = enabled) }
     }
     private fun onChangeSpendingSneaker(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeSpendingSneaker != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeSpendingSneaker, assets)
         setState { copy(spendingSneaker = assets, enabledSpendingSneaker = enabled) }
     }
     private fun onChangeRateGmt(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeRateGmt != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateGmt, coin)
         setState { copy(rateGmt = coin, enabledRateGmt = enabled) }
     }
     private fun onChangeRateGst(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeRateGst != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateGst, coin)
         setState { copy(rateGst = coin, enabledRateGst = enabled) }
     }
     private fun onChangeRateSol(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeRateSol != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateSol, coin)
         setState { copy(rateSol = coin, enabledRateSol = enabled) }
     }
     private fun onChangeRateUsdc(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeRateUsdc != coin && coin.isNotEmpty()
-        setState { copy(rateUsdc = coin, enabledRateSol = enabled) }
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateUsdc, coin)
+        setState { copy(rateUsdc = coin, enabledRateUsdc = enabled) }
     }
     private fun onChangeRateGem(assets: String) {
-        if (!checkCoinValueUpdate(assets)) return
-        val enabled = state.value.beforeRateGem != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateGem, assets)
         setState { copy(rateGem = assets, enabledRateGem = enabled) }
     }
     private fun onChangeRateShoebox(assets: String) {
-        if (!checkCoinValueUpdate(assets)) return
-        val enabled = state.value.beforeRateShoebox != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateShoebox, assets)
         setState { copy(rateShoebox = assets, enabledRateShoebox = enabled) }
     }
     private fun onChangeRateSneaker(assets: String) {
-        if (!checkCoinValueUpdate(assets)) return
-        val enabled = state.value.beforeRateSneaker != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeRateSneaker, assets)
         setState { copy(rateSneaker = assets, enabledRateSneaker = enabled) }
     }
     private fun onChangeWalletGmt(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeWalletGmt != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletGmt, coin)
         setState { copy(walletGmt = coin, enabledWalletGmt = enabled) }
     }
     private fun onChangeWalletGst(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeWalletGst != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletGst, coin)
         setState { copy(walletGst = coin, enabledWalletGst = enabled) }
     }
     private fun onChangeWalletSol(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeWalletSol != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletSol, coin)
         setState { copy(walletSol = coin, enabledWalletSol = enabled) }
     }
     private fun onChangeWalletUsdc(coin: String) {
-        if (!checkCoinValueUpdate(coin)) return
-        val enabled = state.value.beforeWalletUsdc != coin && coin.isNotEmpty()
+        if (!NumberUtil.checkCoinInput(coin)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletUsdc, coin)
         setState { copy(walletUsdc = coin, enabledWalletUsdc = enabled) }
     }
     private fun onChangeWalletGem(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeWalletGem != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletGem, assets)
         setState { copy(walletGem = assets, enabledWalletGem = enabled) }
     }
     private fun onChangeWalletShoebox(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeWalletShoebox != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletShoebox, assets)
         setState { copy(walletShoebox = assets, enabledWalletShoebox = enabled) }
     }
     private fun onChangeWalletSneaker(assets: String) {
-        if (!checkCountValueUpdate(assets)) return
-        val enabled = state.value.beforeWalletSneaker != assets && assets.isNotEmpty()
+        if (!NumberUtil.checkCountInput(assets)) return
+        val enabled = NumberUtil.checkCoinUpdate(state.value.beforeWalletSneaker, assets)
         setState { copy(walletSneaker = assets, enabledWalletSneaker = enabled) }
     }
 }

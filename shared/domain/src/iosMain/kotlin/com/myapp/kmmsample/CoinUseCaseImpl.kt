@@ -1,6 +1,7 @@
 package com.myapp.kmmsample.usecase
 
 import com.myapp.kmmsample.repository.LocalCoinRepository
+import com.myapp.model.entity.AllAsset
 import com.myapp.model.entity.Spending
 import com.myapp.model.entity.StepnCoinRate
 import com.myapp.model.entity.Wallet
@@ -11,6 +12,20 @@ actual class CoinUseCaseImpl actual constructor(
     actual val localCoinRepository: LocalCoinRepository
 ) : CoinUseCase {
 
+    actual override fun getAllAsset(): AllAsset {
+        val spending = getSpendingCoin()
+        val wallet = getWalletCoin()
+        return AllAsset(
+            GstCoin(spending.gst.value + wallet.gst.value),
+            GmtCoin(spending.gmt.value + wallet.gmt.value),
+            SolanaCoin(spending.sol.value + wallet.sol.value),
+            wallet.usdc,
+            GemAssets((spending.gem.value + wallet.gem.value)),
+            ShoeboxAssets((spending.shoebox.value + wallet.shoebox.value)),
+            SneakerAssets((spending.sneaker.value + wallet.sneaker.value))
+        )
+    }
+
     actual override fun getWalletCoin(): Wallet {
         return localCoinRepository.getWalletCoin()
     }
@@ -19,7 +34,7 @@ actual class CoinUseCaseImpl actual constructor(
         return localCoinRepository.getSpendingCoin()
     }
 
-    actual override fun getRateCoin(): StepnCoinRate {
+    actual override fun getRateCoin(legalTender: LegalTender): StepnCoinRate {
         return localCoinRepository.getRateCoin()
     }
 
@@ -55,6 +70,18 @@ actual class CoinUseCaseImpl actual constructor(
             is GemAssets -> localCoinRepository.updateRateGem(assets)
             is ShoeboxAssets -> localCoinRepository.updateRateShoebox(assets)
             is SneakerAssets -> localCoinRepository.updateRateSneaker(assets)
+        }
+    }
+
+    actual override fun changeStableRate(
+        assets: Assets,
+        legalTender: LegalTender
+    ) : Float {
+        val rates = getRateCoin(legalTender)
+        return if (assets is RealAssets) {
+            assets.value * rates.getRate(assets.type()).value * rates.getRate(StepnCoinType.SOL).value
+        } else {
+            assets.value * rates.getRate(assets.type()).value
         }
     }
 }

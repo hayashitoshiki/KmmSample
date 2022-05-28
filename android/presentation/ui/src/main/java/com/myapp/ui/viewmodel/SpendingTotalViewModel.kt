@@ -4,8 +4,7 @@ import com.myapp.component.component.ChartValue
 import com.myapp.composesample.util.base.BaseContract
 import com.myapp.composesample.util.base.BaseViewModel
 import com.myapp.kmmsample.usecase.CoinUseCase
-import com.myapp.model.value.RealAssets
-import com.myapp.model.value.StepnCoinType
+import com.myapp.model.value.LegalTender
 import com.myapp.presentation.extension.chartColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -20,18 +19,13 @@ class SpendingTotalViewModel @Inject constructor(
 ) : BaseViewModel<SpendingContract.State, SpendingContract.Effect, SpendingContract.Event>() {
 
     init {
-        val spending = coinUseCase.getSpendingCoin()
-        val rates = coinUseCase.getRateCoin()
-        val chartValues = spending.values()
+        val chartValues = coinUseCase.getSpendingCoin()
+            .values()
             .map{
                 ChartValue(
                     it.type().label,
                     it.value.toString(),
-                    if (it is RealAssets) {
-                        it.value * rates.getRate(it.type()).value * rates.getRate(StepnCoinType.SOL).value
-                    } else {
-                        it.value * rates.getRate(it.type()).value
-                    },
+                    coinUseCase.changeStableRate(it, LegalTender.JPY),
                     it.type().chartColor()
                 )
             }

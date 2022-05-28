@@ -19,28 +19,11 @@ class HomeViewModel @Inject constructor(
 ) : BaseViewModel<HomeContract.State, HomeContract.Effect, HomeContract.Event>() {
 
     init {
-        val spending = coinUseCase.getSpendingCoin()
-        val wallet = coinUseCase.getWalletCoin()
-        val all = listOf(
-            GstCoin(spending.gst.value + wallet.gst.value),
-            GmtCoin(spending.gmt.value + wallet.gmt.value),
-            SolanaCoin(spending.sol.value + wallet.sol.value),
-            wallet.usdc,
-            GemAssets((spending.gem.value + wallet.gem.value)),
-            ShoeboxAssets((spending.shoebox.value + wallet.shoebox.value)),
-            SneakerAssets((spending.sneaker.value + wallet.sneaker.value))
-            // スニーカー sneaker * rate * rates.getRateCoin()
-        )
-        val rates = coinUseCase.getRateCoin()
-        val chartValues = all.map{
+        val chartValues = coinUseCase.getAllAsset().map {
             ChartValue(
                 it.type().label,
                 it.value.toString(),
-                if (it is RealAssets) {
-                    it.value * rates.getRate(it.type()).value * rates.getRate(StepnCoinType.SOL).value
-                } else {
-                    it.value * rates.getRate(it.type()).value
-                },
+                coinUseCase.changeStableRate(it, LegalTender.JPY),
                 it.type().chartColor()
             )
         }
