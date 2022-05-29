@@ -23,7 +23,6 @@ actual class CoinUseCaseImpl@Inject actual constructor(
             GemAssets((spending.gem.value + wallet.gem.value)),
             ShoeboxAssets((spending.shoebox.value + wallet.shoebox.value)),
             SneakerAssets((spending.sneaker.value + wallet.sneaker.value))
-            // スニーカー sneaker * rate * rates.getRateCoin()
         )
     }
 

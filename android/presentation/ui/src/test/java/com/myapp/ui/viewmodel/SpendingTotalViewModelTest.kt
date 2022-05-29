@@ -48,8 +48,8 @@ class SpendingTotalViewModelTest {
 
     private fun coinUseCaseAllTrue() {
         coinUseCase = mockk<CoinUseCase>().also { useCase ->
-            coEvery { useCase.getSpendingCoin() } returns MockUtil.getSpending()
-            MockUtil.getAllAsset().map {
+            coEvery { useCase.getSpendingCoin() } returns MockUtil.getSpendingCoin()
+            MockUtil.getAllAsset().values().map {
                 coEvery { useCase.changeStableRate(it, any()) } returns it.value * 5
             }
         }

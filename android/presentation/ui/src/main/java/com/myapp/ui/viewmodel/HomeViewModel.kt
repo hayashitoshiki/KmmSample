@@ -19,14 +19,16 @@ class HomeViewModel @Inject constructor(
 ) : BaseViewModel<HomeContract.State, HomeContract.Effect, HomeContract.Event>() {
 
     init {
-        val chartValues = coinUseCase.getAllAsset().map {
-            ChartValue(
-                it.type().label,
-                it.value.toString(),
-                coinUseCase.changeStableRate(it, LegalTender.JPY),
-                it.type().chartColor()
-            )
-        }
+        val chartValues = coinUseCase.getAllAsset()
+                .values()
+                .map {
+                    ChartValue(
+                        it.type().label,
+                        it.value.toString(),
+                        coinUseCase.changeStableRate(it, LegalTender.JPY),
+                        it.type().chartColor()
+                    )
+                }
         setState { copy(chartValue = chartValues) }
     }
 

@@ -97,7 +97,6 @@ class SettingViewModel @Inject constructor(
         is SettingContract.Event.OnChangeWalletGem -> onChangeWalletGem(event.count)
         is SettingContract.Event.OnChangeWalletShoebox -> onChangeWalletShoebox(event.count)
         is SettingContract.Event.OnChangeWalletSneaker -> onChangeWalletSneaker(event.count)
-        else -> {}
     }
 
     private fun onUpdateSpendingCoin(type: AssetsType) {

@@ -49,7 +49,7 @@ class WalletTotalViewModelTest {
     private fun coinUseCaseAllTrue() {
         coinUseCase = mockk<CoinUseCase>().also { useCase ->
             coEvery { useCase.getWalletCoin() } returns MockUtil.getWalletCoin()
-            MockUtil.getAllAsset().map {
+            MockUtil.getAllAsset().values().map {
                 coEvery { useCase.changeStableRate(it, any()) } returns it.value * 5
             }
         }

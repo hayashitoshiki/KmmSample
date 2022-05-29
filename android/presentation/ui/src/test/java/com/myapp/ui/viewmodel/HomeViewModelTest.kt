@@ -49,7 +49,7 @@ class HomeViewModelTest {
     private fun coinUseCaseAllTrue() {
         coinUseCase = mockk<CoinUseCase>().also { useCase ->
             coEvery { useCase.getAllAsset() } returns MockUtil.getAllAsset()
-            MockUtil.getAllAsset().map {
+            MockUtil.getAllAsset().values().map {
                 coEvery { useCase.changeStableRate(it, any()) } returns it.value * 5
             }
         }
@@ -92,7 +92,7 @@ class HomeViewModelTest {
     @Test
     fun init() {
         // 期待結果
-        val chartValues = coinUseCase.getAllAsset().map {
+        val chartValues = coinUseCase.getAllAsset().values().map {
             ChartValue(
                 it.type().label,
                 it.value.toString(),

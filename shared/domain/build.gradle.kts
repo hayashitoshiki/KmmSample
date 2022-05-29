@@ -44,7 +44,17 @@ kotlin {
                 )
             }
         }
-        val androidTest by getting
+        val androidTest by getting {
+            dependencies {
+                // test
+                implementation("junit:junit:4.+")
+                implementation("androidx.test.ext:junit:1.1.3")
+                implementation("androidx.test.espresso:espresso-core:3.4.0")
+                // coroutine-test
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0")
+                implementation("io.mockk:mockk:1.10.3-jdk8")
+            }
+        }
         val iosX64Main by getting
         val iosArm64Main by getting
         val iosSimulatorArm64Main by getting

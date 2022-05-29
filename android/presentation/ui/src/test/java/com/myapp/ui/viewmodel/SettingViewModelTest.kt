@@ -49,7 +49,7 @@ class SettingViewModelTest {
     private fun coinUseCaseAllTrue() {
         coinUseCase = mockk<CoinUseCase>().also { useCase ->
             coEvery { useCase.getWalletCoin() } returns MockUtil.getWalletCoin()
-            coEvery { useCase.getSpendingCoin() } returns MockUtil.getSpending()
+            coEvery { useCase.getSpendingCoin() } returns MockUtil.getSpendingCoin()
             coEvery { useCase.getRateCoin(any()) } returns MockUtil.getRateCoin()
             coEvery { useCase.updateSpendingAssets(any()) } returns Unit
             coEvery { useCase.updateRateAssets(any()) } returns Unit

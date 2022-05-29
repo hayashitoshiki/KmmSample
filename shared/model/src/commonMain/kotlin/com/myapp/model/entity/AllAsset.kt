@@ -22,8 +22,6 @@ data class AllAsset(
     var shoebox: ShoeboxAssets,
     var sneaker: SneakerAssets
 ) {
-    fun <R> map(transform: (Assets) -> R) :List<R> {
-        return listOf(gst, gmt, sol, usdc, gem, shoebox, sneaker).map{ transform(it) }
-    }
+    fun values() = listOf(gst, gmt, sol, usdc, gem, shoebox, sneaker)
 
 }

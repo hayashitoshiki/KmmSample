@@ -36,7 +36,28 @@ object MockUtil {
         NOW_LINE("\n")
     }
 
-    fun getSpending(
+    val assetsLists = listOf(
+        DEFAULT_GST,
+        DEFAULT_GMT,
+        DEFAULT_SOL,
+        DEFAULT_USDC ,
+        DEFAULT_GEM,
+        DEFAULT_SHOEBOX,
+        DEFAULT_SNEAKER
+    )
+
+
+
+    /**
+     * 資産の基底クラス
+     *
+     */
+    sealed class Assets {
+        abstract val value: Float
+        abstract fun type() : AssetsType
+    }
+
+    fun getSpendingCoin(
         gst: GstCoin = DEFAULT_GST,
         gmt: GmtCoin = DEFAULT_GMT,
         sol: SolanaCoin = DEFAULT_SOL,
