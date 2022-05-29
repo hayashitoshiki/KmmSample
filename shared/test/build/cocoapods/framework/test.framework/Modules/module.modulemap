@@ -1,6 +1,0 @@
-framework module test {
-  umbrella header "placeholder.h"
-
-  export *
-  module * { export * }
-}
