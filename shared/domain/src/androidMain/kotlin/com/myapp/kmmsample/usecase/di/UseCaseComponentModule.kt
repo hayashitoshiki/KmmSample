@@ -1,4 +1,4 @@
-package com.myapp.kmmsample.android.di
+package com.myapp.kmmsample.usecase.di
 
 import com.myapp.kmmsample.usecase.CoinUseCase
 import com.myapp.kmmsample.usecase.CoinUseCaseImpl

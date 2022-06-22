@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.pager.*
 //import com.myapp.common.SealedClassEnumExtension
@@ -37,22 +38,37 @@ import kotlinx.coroutines.launch
  * @property icon アイコン
  * @property title タイトル
  * @property screen 表示する画面
+ * @property tag タグ（テスト用）
  */
-abstract class TabItem(val icon: ImageVector, val title: String, val screen: @Composable () -> Unit)
-
+abstract class TabItem(val icon: ImageVector, val title: String, val screen: @Composable () -> Unit, val tag: String)
 
 /**
  * 設定画面_各ウォレットタブ
  */
-sealed class SettingWalletTabItem(icon: ImageVector, title: String, screen: @Composable () -> Unit)
-    : TabItem(icon, title, screen) {
-    class SettingSpending(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Home, "spending", { screen() })
-    class SettingWallet(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.ShoppingCart, "wallet", { screen() })
-    class SettingRate(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Settings, "rate", { screen() })
+sealed class SettingWalletTabItem(icon: ImageVector, title: String, screen: @Composable () -> Unit, tag: String)
+    : TabItem(icon, title, screen,tag) {
+    class SettingSpending(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Home, "spending", { screen() }, TabItemTag.Spending.value)
+    class SettingWallet(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.ShoppingCart, "wallet", { screen() },TabItemTag.Wallet.value)
+    class SettingRate(screen: @Composable () -> Unit) : SettingWalletTabItem(Icons.Filled.Settings, "rate", { screen() }, TabItemTag.Rate.value)
 
 //    companion object : SealedClassEnumExtension<SettingWalletTabItem>
 }
 
+/**
+ * タブのタグ定義
+ */
+sealed class TabItemTag {
+
+    object Spending : TabItemTag() {
+        const val value = "SpendingTab"
+    }
+    object Wallet : TabItemTag(){
+        const val value = "WalletTab"
+    }
+    object Rate : TabItemTag(){
+        const val value = "RateTab"
+    }
+}
 
 // ========================================  //
 // 　　　　　公開用タブ画面Component             //
@@ -125,9 +141,10 @@ private fun CustomTabBar(tabs: List<TabItem>, pagerState: PagerState) {
                 Box(
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
-                       .fillMaxWidth()
+                        .fillMaxWidth()
                         .clip(roundedCornerShape)
                         .background(color = tabColor)
+                        .testTag(tab.tag)
                         .border(
                             width = 1.dp,
                             color = textColor,

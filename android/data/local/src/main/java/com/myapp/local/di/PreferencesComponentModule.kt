@@ -1,4 +1,4 @@
-package com.myapp.kmmsample.android.di
+package com.myapp.local.di
 
 import android.content.Context
 import com.myapp.local.PreferenceManager

@@ -1,4 +1,4 @@
-package com.myapp.kmmsample.android.di
+package com.myapp.repository.di
 
 import com.myapp.kmmsample.repository.LocalCoinRepository
 import com.myapp.repository.LocalCoinRepositoryImpl
